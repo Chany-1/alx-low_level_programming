@@ -1,4 +1,4 @@
-include "main.h"
+#include "main.h"
 /**
  * _strcpy - copy the string pointed to by src to dest
  * @dest: char to check
@@ -13,4 +13,4 @@ char *_strcpy(char *dest, char *src)
 		dest[a] = src[a];
 	dest[a] = '\0';
 	return (dest);
-}
+}}
