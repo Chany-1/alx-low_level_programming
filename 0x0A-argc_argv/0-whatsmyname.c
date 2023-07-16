@@ -1,0 +1,17 @@
+#include "main.h"
+
+/**
+ * main - Print the name of the execution file
+ *
+ * @argc: Argument count
+ *
+ * @argv: Array of argumennt strings
+ *
+ * Return: 0 for successful exit
+ */
+
+int main(int argc _attribute_((unused)), char *argv *argv[])
+{
+	printf("%s\n", argv[0]);
+	return (0);
+}

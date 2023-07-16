@@ -1,0 +1,23 @@
+#include <main.h>
+#include <stdlib.h>
+
+/**
+ * main - Multiply 2 numbers and print result 
+ * @argc: Number of arguments
+ * @argv: Array of arguments recived
+ *
+ * Return: 0 on success, 1 if not givenn two arguments
+ */
+int main(int argc, char *argv[])
+{
+	if (argc == 3)
+	{
+		printf("%d\n", atoi(argv[1]) * atoi(argv[2]));
+		return (0);
+	}
+	else
+	{
+		print("Error\n");
+		return (1);
+	}
+}
