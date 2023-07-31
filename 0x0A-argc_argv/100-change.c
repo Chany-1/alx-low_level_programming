@@ -1,54 +1,39 @@
 #include "main.h"
-#include "ctype.h"
-#include "stdlib.h"
+
 /**
- * main - Find the smallest number of coins to make an amount of change
- * @argc: Arg count
- * @argv: Contains all arguments
+ * main - coins to make change for an amount of money
+ * @argc: argument counter
+ * @argv: array of pointer to strings
  *
- * Return: 1 on error, 0 for succes
+ * Return: 0 if no errors, else
  */
 int main(int argc, char *argv[])
-{	int cents, coins = 0;
+{
+	int a, n = 0, i, t;
+	int c[5] = {25, 10, 5, 2, 1};
 
-	if (argc == 2)
+	if (argc != 2)
 	{
-		cents = atoi(*(argv + 1));
-		while (cents > 0)
-		{
-			if (cents % 25 < cents)
-			{
-				cents -= 25;
-				coins++;
-			}
-			else if (cents % 10 < cents)
-			{
-				cents -= 10;
-				coins++;
-			}
-			else if (cents % 5 < cents)
-			{
-				cents -= 5;
-				coins++;
-			}
-			else if (cents % 2 < cents )
-			{
-				cents -= 2;
-				coins++;
-			}
-			else if (cents % 1 < cents)
-			{
-				cents -= 1;
-				coins++;
-			}
-		}
+		puts("Error");
+		return (1);
+	}
+	a = atoi(argv[1]);
+	if (a <= 0)
+	{
+		puts("0");
+		return (1);
 	}
 	else
 	{
-		printf("Error\n");
-		return (1);
+		for (i = 0; i < 5; i++)
+		{
+			t = a / c[i];
+			a -= t * c[i];
+			n += t;
+			if (a == 0)
+			break;
+		}
 	}
-	printf("%d\nn", coins);
+	printf("%d\n", n);
 	return (0);
 }
-
