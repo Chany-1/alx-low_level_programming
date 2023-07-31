@@ -1,18 +1,20 @@
 #include "main.h"
+
 /**
- * main - Print the name of the execution file
+ * main - the entry point
+ * @argc: argument counter
+ * @argv: array of pointer to strings
  *
- * @argc: Argument count
- *
- * @argv: Array of argumennt strings
- *
- * Return: 0 for successful exit
+ * Return: 0
  */
+
 
 int main(int argc, char *argv[])
 {
-	(void0argc;
-
-	 printf("%s\n", argv[0]);
-	 return (0);
+int i;
+	for (i = 0; i < argc; i++)
+	{
+		printf("%s\n", argv[i]);
+	}
+	return (0);
 }
