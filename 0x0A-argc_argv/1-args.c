@@ -1,16 +1,17 @@
 #include "main.h"
 
 /**
- * main - print the number of arguements received
- * @argc: Arg count
- * @argv: Array of arg strings
+ * main - the entry point
+ * @argc: argument counter
+ * @argv: array of pointer to strings
  *
- * Return: 0 for successful exit
+ * Return: 0
  */
-int main(int argc, char *argv[])
-{
-	(void)argv;
 
+
+int main(int argc, char *argv[] __attribute__ ((unused)))
+
+{
 	printf("%d\n", argc - 1);
 	return (0);
 }
