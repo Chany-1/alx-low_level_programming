@@ -1,48 +1,46 @@
-#include "main.h"
 #include <stdlib.h>
+#include "main.h"
 
 /**
- * string_nconcat - function that concatenates two strings.
- * @s1: pointer to thte null-terminated byte string to apend to.
- * @s2: pointer to the null-terminated byte string to copy from.
- * @n: number of bytes from s2 to concatenate.
+ * *string_nconcat - concatenates n bytes of a string to another string
+ * @s1: string to append to
+ * @s2: string to concatenate from
+ * @n: number of bytes from s2 to concatenate to s1
  *
- * If n is greater or equal to the length of s2 then use entire strinfg s2.
- * If NULL is passed, treat it as empty string
- *
- * Return: NULL(fail) or a pointer to newly allocated space in memory
- * which contains the contents of s1, followed by contents of s2,
- * and null-terminated (Sucees).
+ * Return: pointer to the resulting string
  */
 char *string_nconcat(char *s1, char *s2, unsigned int n)
 {
-	char *dupStr;
-	unsigned int j;
-	int i;
+	char *s;
+	unsigned int i = 0, j = 0, len1 = 0, len2 = 0;
 
-	if (s1 == NULL)
-		s1 = "";
-	if (s2 == NULL)
-		s2 = "";
-	i = 0;
+	while (s1 && s1[len1])
+		len1++;
+	while (s2 && s2[len2])
+		len2++;
 
-	while (s1[i] != '\0')
-		i++;
-	dupStr = malloc(sizeof(char) * (i + n + 1));
+	if (n < len2)
+		s = malloc(sizeof(char) * (len1 + n + 1));
+	else
+		s = malloc(sizeof(char) * (len1 + len2 + 1));
 
-	if (dupStr == NULL)
+	if (!s)
 		return (NULL);
-	i = j = 0;
-	while (s1[i] != '\0')
+
+	while (i < len1)
 	{
-		dupStr[i] = s1[i];
+		s[i] = s1[i];
 		i++;
 	}
-	while (j < n && s2[j] != '\0')
-	{
-		dupStr[i] = s2[j];
-		i++; j++;
-	}
-	dupStr[i] = '\0';
-	return (dupStr);
+
+	while (n < len2 && i < (len1 + n))
+		s[i++] = s2[j++];
+
+	while (n >= len2 && i < (len1 + len2))
+		s[i++] = s2[j++];
+
+	s[i] = '\0';
+
+	return (s);
 }
+
